@@ -1,0 +1,507 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+
+	<script src="jquery-1.10.1.min.js"></script>
+	<script src="jquery-migrate-1.2.1.min.js"></script>
+
+	<style type="text/css">
+	body
+	{
+		margin: 35px;
+		padding: 0px;
+	}
+	</style>
+
+	<script type="text/javascript">
+	function changeColor(color)
+ 	{
+ 		switch (color)
+ 		{
+ 			//case 'red': document.bgColor="#DEA681"; break;
+ 			case 'red': document.body.style.backgroundColor="#F5D7A3"; break;
+	 		case 'green': document.body.style.backgroundColor="#E3BB75"; break;
+	 		case 'blue': document.body.style.backgroundColor="#BD4624"; break;
+	 		case 'balck': document.body.style.backgroundColor="#401908"; break;
+	 		case 'white': document.body.style.backgroundColor="white"; break;
+	 		default: break;
+ 		}
+ 	}
+	$(document).ready(function(){
+		$("#bottom").click(function(){
+			$("#bottom").hide(500);
+			$("#text").hide();
+			$("#calc").show(500);
+		});
+		$("#demo").click(function(){
+			$("#calc").hide(500);
+			$("#bottom").show(500);
+			$("#text").show();
+		});
+	});
+
+	</script>	
+</head>
+
+<body >
+	
+	<p>
+		<canvas id="red" width="40" height="23" onclick="changeColor('red')"></canvas>
+		<canvas id="green" width="40" height="23" onclick="changeColor('green')"></canvas>
+		<canvas id="blue" width="40" height="23" onclick="changeColor('blue')"></canvas>
+		<canvas id="balck" width="40" height="23" onclick="changeColor('balck')"></canvas>
+		<canvas id="white" width="40" height="23" onclick="changeColor('white')"></canvas>
+		<!--button type="button" onclick="alert('Welcome!')">点击这里</button-->
+	</p>
+
+	<p>
+		<br/>
+	</p>
+
+<script>
+	var canvas = document.getElementById('red');
+	var context = canvas.getContext('2d');
+	var centerX = canvas.width / 2;
+	var centerY = canvas.height / 2;
+	var radius = 11;
+
+	context.beginPath();
+	context.arc(centerX, centerY, radius, 0, 2 * Math.PI, false);
+	context.fillStyle = '#F5D7A3';
+	context.fill();
+
+	canvas = document.getElementById('green');
+	context = canvas.getContext('2d');
+	centerX = canvas.width / 2;
+	centerY = canvas.height / 2;
+
+	context.beginPath();
+	context.arc(centerX, centerY, radius, 0, 2 * Math.PI, false);
+	context.fillStyle = '#E3BB75';
+	context.fill();
+
+	canvas = document.getElementById('blue');
+	context = canvas.getContext('2d');
+	centerX = canvas.width / 2;
+	centerY = canvas.height / 2;
+
+	context.beginPath();
+	context.arc(centerX, centerY, radius, 0, 2 * Math.PI, false);
+	context.fillStyle = '#BD4624';
+	context.fill();
+
+	canvas = document.getElementById('balck');
+	context = canvas.getContext('2d');
+	centerX = canvas.width / 2;
+	centerY = canvas.height / 2;
+
+	context.beginPath();
+	context.arc(centerX, centerY, radius, 0, 2 * Math.PI, false);
+	context.fillStyle = '#401908';
+	context.fill();
+
+	canvas = document.getElementById('white');
+	context = canvas.getContext('2d');
+	centerX = canvas.width / 2;
+	centerY = canvas.height / 2;
+
+	context.beginPath();
+	context.arc(centerX, centerY, radius, 0, 2 * Math.PI, false);
+	context.fillStyle = 'white';
+	context.fill();
+</script>
+	
+	<p id="text" style = "text-align:center">我的计算器</p>
+	<p align = "center">
+		<br/>
+		<!--canvas id="cover" width="245" height="245"></canvas-->
+		<canvas id="bottom" width="450" height="253" >calc</canvas>
+		<br>
+		<!--audio src="nong.mp3" controls="controls" autoplay> audio tag. </audio>
+		<br/-->
+		<!--audio src="http://developer.mozilla.org/@api/deki/files/2926/=AudioTest_(1).ogg" controls="controls" autoplay>
+			Your browser does not support the <code>audio</code> element.
+		</audio-->
+	</p>
+
+<script type="text/javascript">
+	
+	var canvas=document.getElementById('bottom');
+	var ctx=canvas.getContext('2d');
+	var myImage = new Image() 
+	myImage.src = "image.png";
+	myImage.onload = function() {
+		ctx.drawImage(myImage, 0, 0);
+	}
+	//ctx.fillStyle='#94995F';
+	// 510, 245
+	//ctx.fillRect(0,0,510,245);
+</script>
+
+<div id="calc" style="display:none;">
+	<p id = "demo" align=center>CALC</p>
+
+	<p align=center>
+		<canvas id="bt1" width="40" height="23"  onclick="number1()">  1  </canvas>
+		<canvas id="bt2" width="40" height="23"  onclick="number2()">  2  </canvas>
+		<canvas id="bt3" width="40" height="23"  onclick="number3()">  3  </canvas>
+		<canvas id="btop1" width="40" height="23"  onclick="add()">  +  </canvas>
+	</p>
+	<p align=center>
+		<canvas id="bt4" width="40" height="23"  onclick="number4()">  4  </canvas>
+		<canvas id="bt5" width="40" height="23"  onclick="number5()">  5  </canvas>
+		<canvas id="bt6" width="40" height="23"  onclick="number6()">  6  </canvas>
+		<canvas id="btop2" width="40" height="23"  onclick="reduce()">  -  </canvas>
+	</p>
+	<p align=center>
+		<canvas id="bt7" width="40" height="23"  onclick="number7()">  7  </canvas>
+		<canvas id="bt8" width="40" height="23"  onclick="number8()">  8  </canvas>
+		<canvas id="bt9" width="40" height="23"  onclick="number9()">  9  </canvas>
+		<canvas id="btop3" width="40" height="23"  onclick="multipy()">  *  </canvas>
+	</p>
+	<p align=center>
+		<canvas id="btopc" width="40" height="23"  onclick="clearMemory()">  c </canvas>
+		<canvas id="bt0" width="40" height="23"  onclick="number0()">  0  </canvas>
+		<canvas id="btopeq" width="40" height="23"  onclick="myFunction()">  =  </canvas>
+		<canvas id="btop4" width="40" height="23"  onclick="divide()">  /  </canvas>
+	</p>
+	<p id = "message" align=center></p>
+</div>
+
+<script type="text/javascript">
+	//1
+	var canvas = document.getElementById('bt1');
+	context = canvas.getContext('2d');
+	centerX = canvas.width / 2;
+	centerY = canvas.height / 2;
+
+	context.beginPath();
+	context.arc(centerX, centerY, radius, 0, 2 * Math.PI, false);
+	context.fillStyle = '#72D32C';
+	context.fill();
+	context.font = "12px Courier New";
+	context.fillStyle = "black";
+	context.fillText("1", 16, 16);
+	//2
+	canvas = document.getElementById('bt2');
+	context = canvas.getContext('2d');
+	centerX = canvas.width / 2;
+	centerY = canvas.height / 2;
+
+	context.beginPath();
+	context.arc(centerX, centerY, radius, 0, 2 * Math.PI, false);
+	context.fillStyle = '#72D32C';
+	context.fill();
+	context.font = "12px Courier New";
+	context.fillStyle = "black";
+	context.fillText("2", 16, 16);
+	//3
+	canvas = document.getElementById('bt3');
+	context = canvas.getContext('2d');
+	centerX = canvas.width / 2;
+	centerY = canvas.height / 2;
+
+	context.beginPath();
+	context.arc(centerX, centerY, radius, 0, 2 * Math.PI, false);
+	context.fillStyle = '#72D32C';
+	context.fill();
+	context.lineWidth = 2;
+	context.font = "12px Courier New";
+	context.fillStyle = "black";
+	context.fillText("3", 16, 16);
+	//4
+	canvas = document.getElementById('bt4');
+	context = canvas.getContext('2d');
+	centerX = canvas.width / 2;
+	centerY = canvas.height / 2;
+
+	context.beginPath();
+	context.arc(centerX, centerY, radius, 0, 2 * Math.PI, false);
+	context.fillStyle = '#72D32C';
+	context.fill();
+	context.font = "12px Courier New";
+	context.fillStyle = "black";
+	context.fillText("4", 16, 16);
+	//5
+	canvas = document.getElementById('bt5');
+	context = canvas.getContext('2d');
+	centerX = canvas.width / 2;
+	centerY = canvas.height / 2;
+
+	context.beginPath();
+	context.arc(centerX, centerY, radius, 0, 2 * Math.PI, false);
+	context.fillStyle = '#72D32C';
+	context.fill();
+	context.font = "12px Courier New";
+	context.fillStyle = "black";
+	context.fillText("5", 16, 16);
+	//6
+	canvas = document.getElementById('bt6');
+	context = canvas.getContext('2d');
+	centerX = canvas.width / 2;
+	centerY = canvas.height / 2;
+
+	context.beginPath();
+	context.arc(centerX, centerY, radius, 0, 2 * Math.PI, false);
+	context.fillStyle = '#72D32C';
+	context.fill();
+	context.font = "12px Courier New";
+	context.fillStyle = "black";
+	context.fillText("6", 16, 16);
+	//7
+	canvas = document.getElementById('bt7');
+	context = canvas.getContext('2d');
+	centerX = canvas.width / 2;
+	centerY = canvas.height / 2;
+
+	context.beginPath();
+	context.arc(centerX, centerY, radius, 0, 2 * Math.PI, false);
+	context.fillStyle = '#72D32C';
+	context.fill();
+	context.font = "12px Courier New";
+	context.fillStyle = "black";
+	context.fillText("7", 16, 16);
+	//8
+	canvas = document.getElementById('bt8');
+	context = canvas.getContext('2d');
+	centerX = canvas.width / 2;
+	centerY = canvas.height / 2;
+
+	context.beginPath();
+	context.arc(centerX, centerY, radius, 0, 2 * Math.PI, false);
+	context.fillStyle = '#72D32C';
+	context.fill();
+	context.font = "12px Courier New";
+	context.fillStyle = "black";
+	context.fillText("8", 16, 16);
+	//9
+	canvas = document.getElementById('bt9');
+	context = canvas.getContext('2d');
+	centerX = canvas.width / 2;
+	centerY = canvas.height / 2;
+
+	context.beginPath();
+	context.arc(centerX, centerY, radius, 0, 2 * Math.PI, false);
+	context.fillStyle = '#72D32C';
+	context.fill();
+	context.font = "12px Courier New";
+	context.fillStyle = "black";
+	context.fillText("9", 16, 16);
+	//0
+	canvas = document.getElementById('bt0');
+	context = canvas.getContext('2d');
+	centerX = canvas.width / 2;
+	centerY = canvas.height / 2;
+
+	context.beginPath();
+	context.arc(centerX, centerY, radius, 0, 2 * Math.PI, false);
+	context.fillStyle = '#72D32C';
+	context.fill();
+	context.font = "12px Courier New";
+	context.fillStyle = "black";
+	context.fillText("0", 16, 16);
+	//+
+	canvas = document.getElementById('btop1');
+	context = canvas.getContext('2d');
+	centerX = canvas.width / 2;
+	centerY = canvas.height / 2;
+
+	context.beginPath();
+	context.arc(centerX, centerY, radius, 0, 2 * Math.PI, false);
+	context.fillStyle = '#72D32C';
+	context.fill();
+	context.font = "12px Courier New";
+	context.fillStyle = "black";
+	context.fillText("+", 16, 16);
+	//-
+	canvas = document.getElementById('btop2');
+	context = canvas.getContext('2d');
+	centerX = canvas.width / 2;
+	centerY = canvas.height / 2;
+
+	context.beginPath();
+	context.arc(centerX, centerY, radius, 0, 2 * Math.PI, false);
+	context.fillStyle = '#72D32C';
+	context.fill();
+	context.font = "12px Courier New";
+	context.fillStyle = "black";
+	context.fillText("-", 16, 16);
+	//*
+	canvas = document.getElementById('btop3');
+	context = canvas.getContext('2d');
+	centerX = canvas.width / 2;
+	centerY = canvas.height / 2;
+
+	context.beginPath();
+	context.arc(centerX, centerY, radius, 0, 2 * Math.PI, false);
+	context.fillStyle = '#72D32C';
+	context.fill();
+	context.font = "12px Courier New";
+	context.fillStyle = "black";
+	context.fillText("*", 16, 16);
+	///
+	canvas = document.getElementById('btop4');
+	context = canvas.getContext('2d');
+	centerX = canvas.width / 2;
+	centerY = canvas.height / 2;
+
+	context.beginPath();
+	context.arc(centerX, centerY, radius, 0, 2 * Math.PI, false);
+	context.fillStyle = '#72D32C';
+	context.fill();
+	context.font = "12px Courier New";
+	context.fillStyle = "black";
+	context.fillText("/", 16, 16);
+	//cancle
+	canvas = document.getElementById('btopc');
+	context = canvas.getContext('2d');
+	centerX = canvas.width / 2;
+	centerY = canvas.height / 2;
+
+	context.beginPath();
+	context.arc(centerX, centerY, radius, 0, 2 * Math.PI, false);
+	context.fillStyle = '#72D32C';
+	context.fill();
+	context.font = "12px Courier New";
+	context.fillStyle = "black";
+	context.fillText("c", 16, 16);
+	//=
+	canvas = document.getElementById('btopeq');
+	context = canvas.getContext('2d');
+	centerX = canvas.width / 2;
+	centerY = canvas.height / 2;
+
+	context.beginPath();
+	context.arc(centerX, centerY, radius, 0, 2 * Math.PI, false);
+	context.fillStyle = '#72D32C';
+	context.fill();
+	context.font = "12px Courier New";
+	context.fillStyle = "black";
+	context.fillText("=", 16, 16);
+	
+</script>
+
+<script>
+var temp = 0;
+var x = 0;
+var y = 0;
+var operation = 0;    // add: 1, reduce:2, multipy:3, divide:4.
+
+//get number
+function number0()
+{
+	//temp = Math.pow(10,count)*temp + 1;
+	temp = 10 * temp + 0;
+	document.getElementById("demo").innerHTML = "".concat(temp);
+}
+function number1()
+{
+	temp= 10 * temp + 1;
+	document.getElementById("demo").innerHTML = "".concat(temp);
+}
+function number2()
+{
+	temp = 10 * temp + 2;
+	document.getElementById("demo").innerHTML = "".concat(temp);
+}
+function number3()
+{
+	temp = 10 * temp + 3;
+	document.getElementById("demo").innerHTML = "".concat(temp);
+}
+function number4()
+{
+	temp = 10 * temp + 4;
+	document.getElementById("demo").innerHTML = "".concat(temp);
+}
+function number5(){
+	temp = 10 * temp + 5;
+	document.getElementById("demo").innerHTML = "".concat(temp);
+}
+function number6()
+{
+	temp = 10 * temp + 6;
+	//count = count + 1;
+	document.getElementById("demo").innerHTML = "".concat(temp);
+}
+function number7()
+{
+	temp = 10 * temp + 7;
+	document.getElementById("demo").innerHTML = "".concat(temp);
+}
+function number8()
+{
+	temp = 10 * temp + 8;
+	document.getElementById("demo").innerHTML = "".concat(temp);
+
+}
+function number9()
+{
+	temp = 10 * temp + 9;
+	document.getElementById("demo").innerHTML = "".concat(temp);
+}
+
+//operation
+function add()
+{
+	x = temp;
+	temp = 0;
+	operation = 1;
+	document.getElementById("demo").innerHTML = "".concat("+");
+}
+function reduce()
+{
+	x = temp;
+	temp = 0;
+	operation = 2;
+	document.getElementById("demo").innerHTML = "".concat("-");
+}
+function multipy()
+{
+	x = temp;
+	temp = 0;
+	operation = 3;
+	document.getElementById("demo").innerHTML = "".concat("*");
+}
+function divide()
+{
+	x = temp;
+	temp = 0;
+	operation = 4;
+	document.getElementById("demo").innerHTML = "".concat("/");
+}
+
+function clearMemory()
+{
+	temp = 0;
+	x = 0;
+	y = 0;
+	operation = 0;
+	document.getElementById("demo").innerHTML = "CALC";
+}
+
+function myFunction()
+{
+	y = temp;
+	switch(operation)
+	{
+		case 1: temp = x + y; break;
+		case 2: temp = x - y; break;
+		case 3: temp = x * y; break;
+		case 4: temp = x / y; break;
+		default: temp = -1;   break;
+	}
+	if(-1 == temp)
+	{
+		document.getElementById("message").innerHTML = "please select number.";
+		temp = 0;
+	}
+	else
+		document.getElementById("demo").innerHTML = "".concat(temp);
+	//document.getElementById("demo").innerHTML = "you input number 1";
+}
+</script>
+
+
+</body>
+</html>
